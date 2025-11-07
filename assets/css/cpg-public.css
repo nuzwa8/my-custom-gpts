@@ -1,0 +1,195 @@
+/**
+ * My Custom GPTs - Public CSS
+ *
+ * This file styles the public [my_custom_gpts] shortcode.
+ * It uses the light purple and orange theme as requested.
+ */
+
+/* --- 1. Design Tokens (Root) --- */
+/* We scope tokens to our root element */
+.cpg-root {
+    /* * Color Palette (Light Theme as requested)
+     * We use light shades of purple and orange.
+     */
+    --cpg-color-primary: #8A63D2; /* Main Purple (same as admin for consistency) */
+    --cpg-color-primary-light: #F4F0FB; /* Light Purple (Card BG) */
+    --cpg-color-secondary: #FFA726; /* Main Orange (Button) */
+    --cpg-color-secondary-light: #FFF8E1; /* Light Orange (Accent) */
+    --cpg-color-secondary-dark: #FB8C00; /* Orange (Hover) */
+
+    --cpg-color-text-primary: #1d2327;
+    --cpg-color-text-secondary: #50575e;
+    --cpg-color-border: #DCD7E7; /* Light purple border */
+    --cpg-color-bg: #ffffff;
+
+    /* Spacing */
+    --cpg-spacing-xs: 4px;
+    --cpg-spacing-sm: 8px;
+    --cpg-spacing-md: 16px;
+    --cpg-spacing-lg: 24px;
+
+    /* Other */
+    --cpg-border-radius: 8px; /* Softer radius for public */
+    --cpg-box-shadow: 0 4px 15px rgba(138, 99, 210, 0.1); /* Soft purple shadow */
+}
+
+/* --- 2. Main Grid Layout --- */
+.cpg-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--cpg-spacing-lg);
+}
+
+/* --- 3. Card Styling --- */
+.cpg-card {
+    background: var(--cpg-color-bg);
+    border: 1px solid var(--cpg-color-border);
+    border-radius: var(--cpg-border-radius);
+    box-shadow: var(--cpg-box-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* To keep radius clean */
+    transition: all 0.3s ease;
+}
+
+.cpg-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(138, 99, 210, 0.15); /* Stronger shadow on hover */
+}
+
+.cpg-card-header {
+    padding: var(--cpg-spacing-md) var(--cpg-spacing-lg);
+    background: var(--cpg-color-primary-light); /* Light Purple BG */
+    border-bottom: 1px solid var(--cpg-color-border);
+}
+
+.cpg-card-title {
+    margin: 0;
+    color: var(--cpg-color-primary); /* Main Purple Text */
+    font-size: 1.25rem;
+}
+
+.cpg-card-body {
+    padding: var(--cpg-spacing-lg);
+    flex-grow: 1; /* Makes card bodies equal height */
+}
+
+.cpg-card-description {
+    margin: 0 0 var(--cpg-spacing-md) 0;
+    color: var(--cpg-color-text-secondary);
+    line-height: 1.6;
+}
+
+.cpg-card-footer {
+    padding: var(--cpg-spacing-md) var(--cpg-spacing-lg);
+    background: var(--cpg-color-bg);
+    border-top: 1px solid var(--cpg-color-border);
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: var(--cpg-spacing-sm);
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+/* --- 4. Prompt Builder Form --- */
+.cpg-prompt-builder {
+    margin-top: var(--cpg-spacing-md);
+    padding: var(--cpg-spacing-md);
+    background: var(--cpg-color-secondary-light); /* Light Orange BG */
+    border-radius: var(--cpg-border-radius);
+    border: 1px solid #FFE0B2; /* Light Orange Border */
+}
+
+.cpg-form-group {
+    margin-bottom: var(--cpg-spacing-sm);
+}
+.cpg-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.cpg-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--cpg-spacing-xs);
+    font-size: 14px;
+    color: var(--cpg-color-text-primary);
+}
+
+.cpg-form-group input[type="text"],
+.cpg-form-group select {
+    width: 100%;
+    padding: var(--cpg-spacing-sm) var(--cpg-spacing-md);
+    border: 1px solid var(--cpg-color-border);
+    border-radius: var(--cpg-border-radius);
+    box-sizing: border-box; /* Important */
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cpg-form-group input[type="text"]:focus,
+.cpg-form-group select:focus {
+    border-color: var(--cpg-color-primary);
+    box-shadow: 0 0 0 2px var(--cpg-color-primary-light);
+    outline: none;
+}
+
+/* --- 5. Custom Buttons --- */
+.cpg-button-primary,
+.cpg-button-secondary {
+    display: inline-block;
+    padding: var(--cpg-spacing-sm) var(--cpg-spacing-md);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--cpg-border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Primary Button (Orange) */
+.cpg-button-primary {
+    background-color: var(--cpg-color-secondary);
+    border-color: var(--cpg-color-secondary);
+    color: var(--cpg-color-text-primary);
+}
+.cpg-button-primary:hover,
+.cpg-button-primary:focus {
+    background-color: var(--cpg-color-secondary-dark);
+    border-color: var(--cpg-color-secondary-dark);
+    color: var(--cpg-color-text-primary);
+}
+
+/* Secondary Button (Purple) */
+.cpg-button-secondary {
+    background-color: transparent;
+    border-color: var(--cpg-color-primary);
+    color: var(--cpg-color-primary);
+}
+.cpg-button-secondary:hover,
+.cpg-button-secondary:focus {
+    background-color: var(--cpg-color-primary);
+    color: #fff;
+}
+.cpg-button-secondary:disabled {
+    background-color: var(--cpg-color-primary);
+    color: #fff;
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* --- 6. Responsive --- */
+@media (max-width: 600px) {
+    /* Stack grid items on mobile */
+    .cpg-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cpg-card-footer {
+        flex-direction: column;
+    }
+    .cpg-button-primary,
+    .cpg-button-secondary {
+        width: 100%; /* Make buttons full width */
+    }
+}
